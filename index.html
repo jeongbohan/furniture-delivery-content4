@@ -485,5 +485,17 @@
       <div class="bottom-space" aria-hidden="true"></div>
     </article>
   </main>
+<script>
+(function () {
+  'use strict';
+  var leadId = new URLSearchParams(window.location.search).get('lead_id');
+  if (!leadId || !/^[A-Za-z0-9_-]{1,64}$/.test(leadId)) return;
+  document.querySelectorAll('a[href^="https://docs.google.com/forms/d/e/"]').forEach(function (link) {
+    var formUrl = new URL(link.href);
+    formUrl.searchParams.set('entry.1444356839', leadId);
+    link.href = formUrl.toString();
+  });
+}());
+</script>
 </body>
 </html>
